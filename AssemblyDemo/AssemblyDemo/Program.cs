@@ -11,6 +11,27 @@ namespace AssemblyDemo
     {
         static void Main(string[] args)
         {
+            Assembly assembly = Assembly.LoadFrom(@"C:\Windows\Microsoft.NET\Framework\v4.0.30319\System.dll");
+            ShowAssembly(assembly);
+
+            Assembly assembly1 = Assembly.GetExecutingAssembly();
+            ShowAssembly(assembly1);
+
+        }
+
+        static void ShowAssembly(Assembly assembly)
+        {
+            Console.WriteLine(assembly.FullName);
+            Console.WriteLine(assembly.GlobalAssemblyCache);
+            Console.WriteLine(assembly.Location);
+            Console.WriteLine(assembly.ImageRuntimeVersion);
+            
+            foreach (Module module in assembly.Modules)
+            {
+                Console.WriteLine(module.Name);
+            }
+
+            Console.ReadKey();
         }
     }
 }
